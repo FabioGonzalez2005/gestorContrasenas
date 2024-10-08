@@ -13,6 +13,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.ui.graphics.Color
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,11 +33,21 @@ fun MainContent() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
-        Text(
-            text = "Gestor de contraseñas",
-            style = TextStyle(fontSize = 37.sp, fontWeight = FontWeight.Bold),
-            modifier = Modifier.padding(top = 36.dp)
-        )
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color(0xFF00BF63))
+                .padding(vertical = 34.dp)
+        ) {
+            Text(
+                text = "Gestor de contraseñas",
+                style = TextStyle(fontSize = 35.sp, fontWeight = FontWeight.Bold),
+                modifier = Modifier
+                    .padding(horizontal = 16.dp)
+                    .align(Alignment.Center)
+            )
+        }
+
         Column(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
