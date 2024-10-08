@@ -29,6 +29,9 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainContent() {
+    val user = "Amaro_09"
+    val passwd = "elfutbolmola"
+
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -59,14 +62,32 @@ fun MainContent() {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) { Spacer(modifier = Modifier.height(250.dp))
-                Text(
-                    text = "Usuario:",
-                    style = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold)
-                )
-                Text(
-                    text = "Contraseña:",
-                    style = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold)
-                )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "Usuario:",
+                        style = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = user,
+                        style = TextStyle(fontSize = 24.sp)
+                    )
+                }
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "Contraseña:",
+                        style = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = passwd,
+                        style = TextStyle(fontSize = 24.sp)
+                    )
+                }
             }
 
             Column(
@@ -89,7 +110,8 @@ fun MainContent() {
                             containerColor = Color(0xFF00BF63)
                         )
                     ) {
-                        Text(text = "Añadir", color = Color.White)
+                        Text(text = "Añadir", color = Color.White, style = TextStyle(fontSize = 25.sp))
+
                     }
                     Button(
                         onClick = {  },
@@ -100,7 +122,7 @@ fun MainContent() {
                             containerColor = Color(0xFF00BF63)
                         )
                     ) {
-                        Text(text = "Eliminar", color = Color.White)
+                        Text(text = "Eliminar", color = Color.White, style = TextStyle(fontSize = 25.sp))
                     }
                 }
                 Row(
@@ -116,7 +138,7 @@ fun MainContent() {
                             containerColor = Color(0xFF00BF63)
                         )
                     ) {
-                        Text(text = "Ver", color = Color.White)
+                        Text(text = "Ver", color = Color.White, style = TextStyle(fontSize = 25.sp))
                     }
                     Button(
                         onClick = { },
@@ -127,7 +149,7 @@ fun MainContent() {
                             containerColor = Color(0xFF00BF63)
                         )
                     ) {
-                        Text(text = "Editar", color = Color.White)
+                        Text(text = "Editar", color = Color.White, style = TextStyle(fontSize = 25.sp))
                     }
                 }
             }
