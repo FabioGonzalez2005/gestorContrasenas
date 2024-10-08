@@ -52,19 +52,22 @@ fun MainContent() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(bottom = 50.dp),
+                .padding(bottom = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(
-                text = "Usuario:",
-                style = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold)
-            )
-            Text(
-                text = "Contraseña:",
-                style = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold)
-            )
-            Spacer(modifier = Modifier.height(150.dp))
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "Usuario:",
+                    style = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold)
+                )
+                Text(
+                    text = "Contraseña:",
+                    style = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold)
+                )
+            }
 
             Column(
                 modifier = Modifier
