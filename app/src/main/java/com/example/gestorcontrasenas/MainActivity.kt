@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.material3.Button
 import androidx.compose.ui.graphics.Color
 
 class MainActivity : ComponentActivity() {
@@ -49,7 +50,9 @@ fun MainContent() {
         }
 
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(bottom = 50.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
@@ -61,13 +64,76 @@ fun MainContent() {
                 text = "Contraseña:",
                 style = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold)
             )
+            Spacer(modifier = Modifier.height(150.dp))
+
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Bottom
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Button(
+                        onClick = {  },
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(8.dp),
+                        colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF00BF63)
+                        )
+                    ) {
+                        Text(text = "Añadir", color = Color.White)
+                    }
+                    Button(
+                        onClick = {  },
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(8.dp),
+                        colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF00BF63)
+                        )
+                    ) {
+                        Text(text = "Eliminar", color = Color.White)
+                    }
+                }
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Button(
+                        onClick = { },
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(8.dp),
+                        colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF00BF63)
+                        )
+                    ) {
+                        Text(text = "Ver", color = Color.White)
+                    }
+                    Button(
+                        onClick = { },
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(8.dp),
+                        colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF00BF63)
+                        )
+                    ) {
+                        Text(text = "Editar", color = Color.White)
+                    }
+                }
+            }
         }
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
 fun AppPreview() {
-    MainContent ()
+    MainContent()
 }
