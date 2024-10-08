@@ -58,7 +58,7 @@ fun MainContent() {
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
-            ) {
+            ) { Spacer(modifier = Modifier.height(250.dp))
                 Text(
                     text = "Usuario:",
                     style = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold)
