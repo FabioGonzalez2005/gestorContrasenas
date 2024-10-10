@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import java.io.File
 
 class MainActivity : ComponentActivity() {
@@ -67,6 +68,33 @@ class MainActivity : ComponentActivity() {
         return listaUsuarios
     }
 
+    private fun agregarUsuario(context: Context, nombreArchivo: String, nuevoUsuario: String, nuevaContrasena: String) {
+        val archivo = File(context.filesDir, nombreArchivo)
+
+        if (nuevoUsuario.isBlank() || nuevaContrasena.isBlank()) {
+            Toast.makeText(context, "Debes rellenar los campos", Toast.LENGTH_SHORT).show()
+        } else {
+            var usuarioExiste = false
+            val lineas = archivo.readLines()
+
+            for (linea in lineas) {
+                val partes = linea.split(":")
+                if (partes[0] == nuevoUsuario) {
+                    usuarioExiste = true
+                    break
+                }
+            }
+
+            if (usuarioExiste) {
+                Toast.makeText(context, "El usuario ya existe.", Toast.LENGTH_SHORT).show()
+            } else {
+                archivo.appendText("\n$nuevoUsuario:$nuevaContrasena")
+                Toast.makeText(context, "Usuario añadido correctamente.", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+
     @Composable
     fun MainContent() {
         val context = LocalContext.current
@@ -108,6 +136,8 @@ class MainActivity : ComponentActivity() {
                         .align(Alignment.Center)
                 )
             }
+
+            var habilitarConfirmar by remember { mutableStateOf(false) } // Estado para habilitar/deshabilitar el botón
 
             Column(
                 modifier = Modifier
@@ -164,6 +194,25 @@ class MainActivity : ComponentActivity() {
                     }
                 }
 
+                Button(
+                    onClick = {
+                        agregarUsuario(context, "usersAndPass.txt", user, passwd)
+                        userPass = cargarDatos(context, "usersAndPass.txt")
+                        editable = false
+                        title = ""
+                        habilitarConfirmar = false
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 100.dp),
+                    colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF00BF63)
+                    ),
+                    enabled = habilitarConfirmar
+                ) {
+                    Text(text = "Confirmar", color = Color.White, style = TextStyle(fontSize = 25.sp))
+                }
+
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -181,6 +230,8 @@ class MainActivity : ComponentActivity() {
                                     indiceArchivo -= 1
                                     user = userPass[indiceArchivo].first
                                     passwd = userPass[indiceArchivo].second
+                                    editable = false
+                                    title = ""
                                 }
                             },
                             modifier = Modifier
@@ -198,6 +249,8 @@ class MainActivity : ComponentActivity() {
                                     indiceArchivo += 1
                                     user = userPass[indiceArchivo].first
                                     passwd = userPass[indiceArchivo].second
+                                    editable = false
+                                    title = ""
                                 }
                             },
                             modifier = Modifier
@@ -220,6 +273,7 @@ class MainActivity : ComponentActivity() {
                                 passwd = ""
                                 editable = true
                                 title = "Añadir Usuario"
+                                habilitarConfirmar = true
                             },
                             modifier = Modifier
                                 .weight(1f)
@@ -234,6 +288,7 @@ class MainActivity : ComponentActivity() {
                             onClick = {
                                 editable = true
                                 title = "Eliminar Usuario"
+                                habilitarConfirmar = true
                             },
                             modifier = Modifier
                                 .weight(1f)
@@ -247,6 +302,7 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
+
         }
     }
 }
