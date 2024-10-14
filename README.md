@@ -10,13 +10,10 @@ Este proyecto es un **Gestor de Contraseñas** que permite a los usuarios gestio
 - Navegación sencilla entre las credenciales mediante botones:
   - **Siguiente**: Para avanzar al siguiente usuario y contraseña.
   - **Anterior**: Para volver al usuario y contraseña anterior.
+  - **Añadir**: Para añadir un usuario y contraseña a la memoria.
+  - **Eliminar**: Para eliminar un usuario y contraseña de la memoria.
+  - **Confirmar**: Para confirmar los cambios hechos mediante el menú de "Añadir usuario" o "Eliminar usuario".
 
 ## Bocetos
 
 ![Boceto1](/imagenes/boceto1.png)
-
-## Tecnologías Utilizadas
-
-- **Android Studio**
-- **Kotlin**
-- **Jetpack Compose**
